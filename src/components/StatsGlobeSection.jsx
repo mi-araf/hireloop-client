@@ -7,6 +7,7 @@ import {
     PiUserCircleLight,
     PiStarLight,
 } from "react-icons/pi";
+import { motion } from "motion/react";
 
 const stats = [
     {
@@ -31,10 +32,46 @@ const stats = [
     },
 ];
 
+const cardsWrapperVariants = {
+    hidden: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.06,
+            staggerDirection: -1,
+        },
+    },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.12,
+            delayChildren: 0.15,
+        },
+    },
+};
+
+const statCardVariants = {
+    hidden: {
+        opacity: 0,
+        y: 45,
+        scale: 0.96,
+        filter: "blur(8px)",
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        transition: {
+            duration: 0.65,
+            ease: [0.22, 1, 0.36, 1],
+        },
+    },
+};
+
 export default function StatsGlobeSection() {
     return (
         <section className="relative overflow-hidden bg-black text-white ">
-            <div className="w-10/12 mx-auto md:w-11/12">
+            <div className="w-11/12 mx-auto md:w-10/12">
                 {/* Globe image */}
                 <Image
                     src="/images/globe.png"
@@ -72,13 +109,24 @@ export default function StatsGlobeSection() {
 
                         {/* Cards */}
                         <div className="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                            {stats.map((item) => {
+                            {stats.map((item, index) => {
                                 const Icon = item.icon;
 
                                 return (
-                                    <div
+                                    <motion.div
                                         key={item.label}
-                                        className="card relative overflow-hidden border border-pink-200/15 bg-white/5 shadow-2xl shadow-pink-500/10 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-pink-300/35 hover:shadow-pink-500/25"
+                                        initial={{ opacity: 0, y: 35 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{
+                                            once: false,
+                                            amount: 0.35,
+                                        }}
+                                        transition={{
+                                            duration: 0.55,
+                                            ease: "easeOut",
+                                            delay: index * 0.08,
+                                        }}
+                                        className="card relative overflow-hidden border border-pink-200/15 bg-white/5 shadow-2xl shadow-pink-500/10 backdrop-blur-xl transition-colors duration-300 hover:border-pink-300/35 hover:shadow-pink-500/25"
                                     >
                                         <div className="absolute inset-0 bg-linear-to-br from-pink-500/12 via-white/5 to-violet-500/10" />
                                         <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-pink-200/40 to-transparent" />
@@ -91,12 +139,10 @@ export default function StatsGlobeSection() {
                                                     {item.value}
                                                 </h3>
 
-                                                <p className="mt-4 text-sm text-pink-50/80">
-                                                    {item.label}
-                                                </p>
+                                                <p className="mt-4 text-sm text-pink-50/80">{item.label}</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 );
                             })}
                         </div>

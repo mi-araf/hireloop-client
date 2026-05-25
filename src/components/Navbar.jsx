@@ -5,6 +5,7 @@ import { Button, Drawer } from "@heroui/react";
 import { Bars, Xmark } from "@gravity-ui/icons";
 import { FiArrowRight } from "react-icons/fi";
 import Image from "next/image";
+import AuthNavbarButton from "./AuthNavbarButton";
 
 const navLinks = [
     {
@@ -46,12 +47,7 @@ export default function Navbar() {
 
                     <div className="mx-4 h-7 w-px bg-white/10" />
 
-                    <Link
-                        href="/signin"
-                        className="rounded-xl px-4 py-2 text-sm font-semibold text-violet-400 transition hover:bg-violet-500/10 hover:text-violet-300"
-                    >
-                        Sign In
-                    </Link>
+                    <AuthNavbarButton />
 
                     <Link
                         href="/get-started"
@@ -106,12 +102,7 @@ export default function Navbar() {
                                         <div className="my-6 h-px w-full bg-white/10" />
 
                                         <div className="mt-auto flex flex-col gap-3">
-                                            <Link
-                                                href="/signin"
-                                                className="rounded-2xl border border-violet-400/30 bg-violet-500/10 px-5 py-3 text-center text-base font-semibold text-violet-300 transition hover:bg-violet-500/15"
-                                            >
-                                                Sign In
-                                            </Link>
+                                            <AuthNavbarButton />
 
                                             <Link
                                                 href="/get-started"
