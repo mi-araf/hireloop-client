@@ -86,7 +86,7 @@ export default function Pricing() {
                         <button
                             type="button"
                             onClick={() => setBilling("monthly")}
-                            className={`rounded-full px-5 py-2 text-sm font-semibold transition duration-300 ${billing === "monthly"
+                            className={`cursor-pointer rounded-full px-5 py-2 text-sm font-semibold transition duration-300 ${billing === "monthly"
                                     ? "bg-white text-black shadow-lg"
                                     : "text-white/60 hover:text-white"
                                 }`}
@@ -97,7 +97,7 @@ export default function Pricing() {
                         <button
                             type="button"
                             onClick={() => setBilling("yearly")}
-                            className={`flex items-center gap-2 rounded-full py-2 pl-5 pr-2 text-sm font-semibold transition duration-300 ${billing === "yearly"
+                            className={`cursor-pointer flex items-center gap-2 rounded-full py-2 pl-5 pr-2 text-sm font-semibold transition duration-300 ${billing === "yearly"
                                     ? "bg-white text-black shadow-lg"
                                     : "text-white/60 hover:text-white"
                                 }`}

@@ -1,3 +1,4 @@
+import CTA from "@/components/CTA";
 import Features from "@/components/Features";
 import MainBanner from "@/components/MainBanner";
 import Pricing from "@/components/Pricing";
@@ -13,6 +14,7 @@ export default function Home() {
 
             <Features />
             <Pricing />
+            <CTA />
 
         </div>
     );

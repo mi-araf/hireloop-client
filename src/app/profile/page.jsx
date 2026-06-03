@@ -211,7 +211,7 @@ export default function ProfilePage() {
 
                                 <div className="mt-5 flex flex-wrap justify-center gap-2">
                                     <span className="badge badge-primary badge-outline">
-                                        Job Seeker
+                                        Job {user.role}
                                     </span>
                                     <span className="badge badge-secondary badge-outline">
                                         Active Account

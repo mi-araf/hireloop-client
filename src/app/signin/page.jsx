@@ -201,7 +201,7 @@ export default function SigninPage() {
                             <p className="mt-7 text-center text-sm text-base-content/60">
                                 Don&apos;t have an account?{" "}
                                 <Link
-                                    href={`/signup?callbackURL=${encodeURIComponent(callbackURL)}`}
+                                    href={`/sign-up?callbackURL=${encodeURIComponent(callbackURL)}`}
                                     className="font-semibold text-primary transition hover:text-pink-500 hover:underline"
                                 >
                                     Create account

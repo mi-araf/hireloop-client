@@ -13,6 +13,14 @@ export const auth = betterAuth({
         // Optional: if you don't provide a client, database transactions won't be enabled.
         client
     }),
+    user: {
+        additionalFields: {
+            role: {
+                default: "seeker"
+            }
+        }
+    },
+
     baseURL: process.env.BETTER_AUTH_URL,
     secret: process.env.BETTER_AUTH_SECRET,
 });
