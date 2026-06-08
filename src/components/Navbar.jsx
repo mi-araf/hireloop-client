@@ -6,6 +6,8 @@ import { Bars, Xmark } from "@gravity-ui/icons";
 import { FiArrowRight } from "react-icons/fi";
 import Image from "next/image";
 import AuthNavbarButton from "./AuthNavbarButton";
+import { useSession, signOut } from "@/lib/auth-client";
+import { useState } from "react";
 
 const navLinks = [
     {
@@ -23,6 +25,16 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { data: session } = useSession();
+
+    const user = session?.user;
+
+    const handleSignOut = async () => {
+        await signOut();
+
+    }
+
     return (
         <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#171717]/95 backdrop-blur-xl">
             <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -47,6 +59,25 @@ export default function Navbar() {
 
                     <div className="mx-4 h-7 w-px bg-white/10" />
 
+                    {/* Auth Links */}
+                    <div className="flex items-center gap-4">
+                        {
+                            user ?
+                            <>
+                                    Hi, {user.name}!
+                                    <Button onClick={handleSignOut}
+                                        variant="ghost">Sign Out</Button>
+                                </>
+                                :
+                                <Link
+                                href="/auth/signin"
+                                className="text-sm font-medium text-violet-400 transition hover:text-violet-300"
+                                >
+                                    Sign In
+                                </Link>
+                        }
+                    </div>
+                        
                     <AuthNavbarButton />
 
                     <Link
